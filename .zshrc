@@ -78,7 +78,6 @@ alias lt="eza --tree -L 3"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias spot="spotify_player"
 
 ex ()
 {
