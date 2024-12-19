@@ -3,6 +3,7 @@ gui-wm/sway -swaybar -tray
 gui-apps/waybar tray
 net-im/telegram-desktop qt6
 media-sound/spotify-player image lyrics sixel
+net-im/discord appindicator
 
 # required by net-im/telegram-desktop-5.5.5::gentoo
 # required by telegram-desktop (argument)

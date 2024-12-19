@@ -11,7 +11,5 @@ sys-libs/libudev-compat ~amd64
 games-util/game-device-udev-rules ~amd64
 games-util/protonup ~amd64
 gui-apps/swaync ~amd64
-net-im/vesktop-bin ~amd64
 app-office/obsidian ~amd64
 media-sound/pamixer ~amd64
-media-sound/spotify-player **
