@@ -43,6 +43,7 @@ vim.opt.foldenable = false
 -- UI
 -- ===============================
 opt.cursorline = true
+opt.termguicolors = true
 opt.colorcolumn = tostring(120)
 opt.signcolumn = "yes"
 opt.showcmd = false

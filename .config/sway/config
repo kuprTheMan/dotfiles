@@ -41,10 +41,10 @@ exec_always {
 
 # Idle configuration:
 exec swayidle -w \
-timeout 300 'swaylock -f -C ~/.config/sway/swaylock/config' \
+timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
 timeout 600 'swaymsg "output * dpms off"' \
 resume 'swaymsg "output * dpms on"' \
-before-sleep 'swaylock -f -C ~/.config/sway/swaylock/config'
+before-sleep 'swaylock -f -C ~/.config/swaylock/config'
 
 input type:keyboard {
   xkb_layout us,ru
@@ -71,7 +71,7 @@ bindsym --to-code {
   # Reload the configuration file
   $mod+Shift+c reload
 
-  # Don't disturb
+  # Notifications
   $mod+n exec swaync-client -t
 
   # Multimedia:
@@ -156,13 +156,17 @@ workspace 6 output DP-1
 floating_modifier $mod normal
 
 ### Rules
-for_window [class="obsidian"] floating enable, move position center, resize set 1800 1000
-for_window [app_id="imv"] floating enable, move position center, resize set 1800 1000
-for_window [app_id="firefox"] inhibit_idle fullscreen
-for_window [title="^Picture-in-Picture$"] floating enable, move position center, sticky enable, border none
-for_window [title="Friends List"] floating enable
-for_window [title="Steam Settings"] floating enable
-for_window [title="About Mozilla Firefox"] floating enable
+for_window {
+  [class="obsidian"] floating enable, move position center, resize set 1800 1000
+  [app_id="imv"] floating enable, move position center, resize set 1800 1000
+  [app_id="firefox"] inhibit_idle fullscreen
+  [title="^Picture-in-Picture$"] floating enable, move position center, sticky enable, border none
+  [class="^steam$"] floating enable
+  [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, move position center, resize set 1200 800
+  [app_id="discord"] inhibit_idle fullscreen
+  [floating] border pixel 1
+}
+
 
 ### Theming
 #
@@ -222,6 +226,7 @@ output HDMI-A-1 pos 2560 0 mode 1920x1080@144Hz
 #
 # Status Bar:
 #
-bar swaybar_command waybar
-
+bar {
+  swaybar_command waybar
+}
 include /etc/sway/config.d/*

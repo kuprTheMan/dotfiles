@@ -10,7 +10,6 @@
 	co = checkout
   st = status
 	fpush = push --force-with-lease
-	unadd = reset
 	uncommit = reset --soft head^
 
 [branch]

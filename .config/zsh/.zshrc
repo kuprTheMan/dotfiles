@@ -1,8 +1,3 @@
-# Set directory p10k
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -15,44 +10,43 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
 
 # Load completions
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=1
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+function zle-keymap-select() {
+  case $KEYMAP in
+    vicmd) echo -ne '\e[1 q';;      # block
+    viins|main) echo -ne '\e[5 q';; # beam
+  esac
 }
 zle -N zle-keymap-select
+
+# Start in insert mode
+zle-line-init() {
+    zle -K viins 
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q'
 
 # History search
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
+
+# Revers select complition menu
+bindkey "^[[Z" reverse-menu-complete
 
 # History
 HISTSIZE=5000
@@ -62,16 +56,19 @@ setopt appendhistory
 setopt SHARE_HISTORY
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors 'no=00;37' 'fi=00;37' 'di=01;34' 'ln=01;36' 'pi=01;33' 'so=01;35' 'bd=01;33' 'cd=01;33' 'or=01;31' 'mi=01;31' 'ex=01;32'
+zstyle ':completion:*:descriptions' format '%F{yellow}---- %d%f' 
+zstyle ':completion:*:messages' format ' %F{cyan}%d%f '
+zstyle ':completion:*:warnings' format ' %F{red}%d%f '
+zstyle ':completion:*' list-rows-first true
+zstyle ':completion:*' list-separator ' --> '
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # Aliases
 alias du=dust
 alias vim=nvim
-alias vi=nvim
 alias l="eza --icons -F -H --group-directories-first --git"
 alias ll="eza --icons -F -H --group-directories-first --git -all"
 alias lt="eza --tree -L 3"
@@ -79,7 +76,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-ex ()
+function ex ()
 {
   if [ -f $1 ] ; then
     case $1 in
@@ -101,19 +98,9 @@ ex ()
   fi
 }
 
-
-# Jumping between prompts::Foot
-precmd() {
-    print -Pn "\e]133;A\e\\"
-}
-
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
 
-# bun completions
-[ -s "/home/kupr/.bun/_bun" ] && source "/home/kupr/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Add starship promt
+eval "$(starship init zsh)"
