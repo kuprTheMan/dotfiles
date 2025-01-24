@@ -55,6 +55,13 @@ return {
 					enable = true,
 					clear_on_cursor_move = true,
 				},
+				navigation = {
+					enable = true,
+					keymaps = {
+						goto_next_usage = "<a-n>",
+						goto_previous_usage = "<a-p>",
+					},
+				},
 			},
 			fold = { enabe = true },
 			textobjects = {
