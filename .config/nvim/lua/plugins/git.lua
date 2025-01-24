@@ -1,6 +1,7 @@
 return {
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "User InGitRepo",
 		dependencies = {
 			"tpope/vim-rhubarb",
 			{
@@ -21,7 +22,6 @@ return {
 				},
 			},
 		},
-		event = "User InGitRepo",
 		opts = {
 			signs = {
 				add = { text = "▎" },

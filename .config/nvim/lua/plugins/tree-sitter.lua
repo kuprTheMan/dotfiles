@@ -1,8 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	lazy = false,
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
+		"nvim-treesitter/nvim-treesitter-refactor",
 	},
 	build = function()
 		local ts_update = require("nvim-treesitter.install").update({
@@ -48,6 +49,12 @@ return {
 					end
 				end,
 				additional_vim_regex_highlighting = false,
+			},
+			refactor = {
+				highlight_definitions = {
+					enable = true,
+					clear_on_cursor_move = true,
+				},
 			},
 			fold = { enabe = true },
 			textobjects = {

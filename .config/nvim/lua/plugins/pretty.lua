@@ -14,6 +14,7 @@ return {
 				},
 				overrides = {
 					SignColumn = { link = "GruvboxBg0" },
+					WinSeparator = { bg = "None" },
 					Normal = { bg = "#0E1018" },
 				},
 			})
@@ -49,21 +50,8 @@ return {
 	},
 
 	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-		opts = {
-			options = {
-				mode = "tabs",
-				show_buffer_close_icons = false,
-				show_close_icon = false,
-				always_show_bufferline = false,
-			},
-		},
-	},
-
-	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		main = "ibl",
 		opts = {
 			indent = {
@@ -77,26 +65,17 @@ return {
 		},
 	},
 
+	-- Floating rename input
 	{
-		"stevearc/dressing.nvim",
-		event = "VeryLazy",
-		opts = {
-			input = {
-				override = function(conf)
-					conf.col = -1
-					conf.row = 0
-					return conf
-				end,
-			},
-			select = {
-				backend = "nui",
-			},
-		},
+		"filipdutescu/renamer.nvim",
+		event = "LspAttach",
+		opts = {},
 	},
 
 	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
+		dependencies = { "echasnovski/mini.icons" },
 		config = function()
 			local alpha = require("alpha")
 			local dashboard = require("alpha.themes.dashboard")
@@ -130,7 +109,7 @@ return {
 
 	{
 		"echasnovski/mini.icons",
-		lazy = true,
+    lazy = true,
 		opts = {},
 		init = function()
 			package.preload["nvim-web-devicons"] = function()

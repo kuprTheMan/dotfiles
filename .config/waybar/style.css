@@ -1,5 +1,5 @@
 @define-color background rgba(21, 21, 21, 1.0);
-@define-color background-alt rgba(68, 68, 70, 0.05);
+@define-color background-alt rgba(64, 64, 64, 0.4);
 @define-color border rgba(232, 227, 227, 0.2);
 @define-color red rgb( 182, 100, 103);
 @define-color white rgb( 232, 227, 227 );
@@ -51,10 +51,11 @@ window#waybar {
 #tray,
 #language,
 #pulseaudio,
+#custom-weather,
 #mode,
 #clock {
   color: @white;
-  background: @background-alt;
+  background: @background;
   border: 1px solid @border;
   margin: 0.7rem 0.35rem;
   padding: 0.4rem 0.8rem 0.4rem 0.8rem ;
@@ -76,87 +77,17 @@ window#waybar {
   transition: 200ms linear;
 }
 
-#workspaces button:last-child {
-  margin-right: 0;
-}
-
-#workspaces button:hover {
-  background: lighter(@white);
-  color: @background;
-}
-
 #workspaces button.urgent {
   background: @red;
   color: @background;
 }
 
-#workspaces button.urgent:hover {
-  background: lighter(@red);
-  color: @background;
+#workspaces button.empty {
+  background: @background-alt;
+  color: @white;
 }
 
 #workspaces button.focused {
   background: @white;
   color: @background;
-}
-
-#workspaces button.focused:hover {
-  background: lighter(@white);
-  color: @background;
-}
-
-/* Systray */
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background: @red;
-}
-
-menu {
-  background: @background;
-  border: 1px solid @border;
-}
-
-menu separator {
-  background: @border;
-}
-
-menu menuitem {
-  background: transparent;
-  padding: 0.5rem;
-  transition: 200ms;
-}
-
-menu menuitem:hover {
-  background: @white;
-  color: @background;
-}
-
-menu menuitem:first-child {
-}
-
-menu menuitem:last-child {
-}
-
-menu menuitem:only-child {
-}
-
-/* Notification */
-#custom-notification {
-  color: @white;
-}
-
-#pulseaudio-slider highlight {
-  background: @white;
-  border: 1px solid @border;
-}
-
-/* Keyframes */
-@keyframes blink {
-  to {
-    color: @white;
-  }
 }

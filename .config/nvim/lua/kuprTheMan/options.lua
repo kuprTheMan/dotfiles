@@ -1,11 +1,8 @@
 local opt = vim.opt
 
-vim.g.mapleader = " "
-
 -- ===============================
 -- General
 -- ===============================
-opt.title = true
 opt.backup = false
 opt.wrap = false
 opt.swapfile = false
@@ -35,22 +32,22 @@ opt.tabstop = 2
 -- ===============================
 -- Folding
 -- ===============================
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
-vim.opt.foldenable = false
+opt.foldmethod = 'expr'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldenable = false
 
 -- ===============================
 -- UI
 -- ===============================
 opt.cursorline = true
+opt.showtabline = 0
 opt.termguicolors = true
 opt.colorcolumn = tostring(120)
 opt.signcolumn = "yes"
-opt.showcmd = false
 opt.laststatus = 3
 opt.showmode = false
 opt.number = true
 opt.relativenumber = true
 opt.list = true
 opt.listchars:append "eol:¬"
-vim.opt.fillchars = [[eob: ]]
+opt.fillchars = "eob: "

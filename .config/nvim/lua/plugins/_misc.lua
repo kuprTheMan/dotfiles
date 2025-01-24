@@ -1,22 +1,82 @@
 return {
 	-- Helpers
 	"nvim-lua/plenary.nvim",
-	"MunifTanjim/nui.nvim",
+
+	-- Formatter
+	{
+		"stevearc/conform.nvim",
+		cmd = "ConformInfo",
+		keys = {
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ lsp_fallback = true })
+				end,
+				mode = { "n", "v" },
+				desc = "Format Injected Langs",
+			},
+		},
+		opts = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					c = { "clang_format" },
+					cpp = { "clang_format" },
+					go = { "goimports", "gofumpt" },
+					lua = { "stylua" },
+				},
+			})
+		end,
+	},
+
+	-- Search and Replace
+	{
+		"MagicDuck/grug-far.nvim",
+		cmd = "GrugFar",
+		opts = { headerMaxWidth = 80 },
+		keys = {
+			{
+				"<leader>sr",
+				function()
+					local grug = require("grug-far")
+					local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
+					grug.open({
+						transient = true,
+						prefills = {
+							filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+						},
+					})
+				end,
+				mode = { "n", "v" },
+			},
+		},
+	},
 
 	-- Better Movement
 	{
-		"ggandor/leap.nvim",
-      -- stylua: ignore
-      keys = {
-        { "s", mode = { "n", "x", "o" }, "<Plug>(leap-forward)" },
-        { "S", mode = { "n", "o", "x" }, "<Plug>(leap-backward)" },
-      },
-		opts = {},
+		"smoka7/hop.nvim",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		config = function()
+			local hop = require("hop")
+			local directions = require("hop.hint").HintDirection
+
+			hop.setup({})
+
+			vim.keymap.set("", "s", function()
+				hop.hint_char2({ current_line_only = false })
+			end, { remap = true, desc = "Hop 2 characters" })
+
+			vim.keymap.set("", "f", function()
+				hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+			end, { remap = true, desc = "Hop to next character (this line)" })
+			vim.keymap.set("", "F", function()
+				hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+			end, { remap = true, desc = "Hop to previous character (this line)" })
+		end,
 	},
 
 	{
 		"echasnovski/mini.pairs",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		opts = {
 			modes = { insert = true, command = true },
 			skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
@@ -28,7 +88,7 @@ return {
 
 	{
 		"echasnovski/mini.surround",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		recommended = true,
 		opts = {
 			mappings = {
@@ -45,7 +105,7 @@ return {
 
 	{
 		"folke/todo-comments.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		opts = {},
       -- stylua: ignore
       keys = {
@@ -54,41 +114,7 @@ return {
       },
 	},
 
-	{
-		"ibhagwan/fzf-lua",
-		cmd = "FzfLua",
-      -- stylua: ignore
-      keys = {
-          { ";f", "<cmd>FzfLua files<CR>", desc = "Find Files (Root Dir)" },
-          { ";r", "<cmd>FzfLua live_grep<CR>", desc = "Grep (Root Dir)" },
-          { ";;", function() require("fzf-lua").resume() end, desc = "Resume", },
-        },
-	},
-
-	{
-		"RRethy/vim-illuminate",
-		config = function()
-			require("illuminate").configure({
-				modes_allowlist = { "n" },
-				vim.cmd([[
-                augroup illuminate_augroup
-                    autocmd!
-                    autocmd VimEnter * hi illuminatedWordRead cterm=none gui=none guibg=#526252
-                    autocmd VimEnter * hi illuminatedWordText cterm=none gui=none guibg=#525252
-                    autocmd VimEnter * hi illuminatedWordWrite cterm=none gui=none guibg=#625252
-                augroup END
-            ]]),
-			})
-		end,
-	},
-
-	-- Lua
-	{
-		"folke/zen-mode.nvim",
-		keys = { "<leader>z", "<cmd>ZenMode<cr>" },
-	},
-
-	-- Toggler
+		-- Toggler
 	{
 		"monaqa/dial.nvim",
       -- stylua: ignore
@@ -113,7 +139,7 @@ return {
 
 	{
 		"numToStr/Comment.nvim",
-		event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
 		opts = function()
 			vim.g.skip_ts_context_commentstring_module = true

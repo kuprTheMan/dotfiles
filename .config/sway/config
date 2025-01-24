@@ -17,10 +17,10 @@ set {
 
   $gaps_size 12
  
-  $border_size 4
+  $border_size 6
  
   $term footclient
-  $menu rofi -show drun
+  $menu fuzzel
 }
 
 #
@@ -41,10 +41,10 @@ exec_always {
 
 # Idle configuration:
 exec swayidle -w \
-timeout 300 'swaylock -f -C ~/.config/swaylock/config' \
+timeout 300 'swaylock -f' \
 timeout 600 'swaymsg "output * dpms off"' \
 resume 'swaymsg "output * dpms on"' \
-before-sleep 'swaylock -f -C ~/.config/swaylock/config'
+before-sleep 'swaylock -f'
 
 input type:keyboard {
   xkb_layout us,ru
@@ -66,12 +66,12 @@ bindsym --to-code {
   $mod+p exec grim -g "$(slurp)" - | wl-copy
 
   # Clipboard
-  $mod+c exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
+  $mod+c exec cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
 
   # Reload the configuration file
   $mod+Shift+c reload
 
-  # Notifications
+  # Don't disturb
   $mod+n exec swaync-client -t
 
   # Multimedia:
@@ -92,8 +92,6 @@ bindsym --to-code {
   $mod+Shift+$down move down
   $mod+Shift+$up move up
   $mod+Shift+$right move right
-
-
 
   ## Workspaces:
   # Switch to workspace
@@ -157,16 +155,19 @@ floating_modifier $mod normal
 
 ### Rules
 for_window {
+  [floating] border pixel 1
   [class="obsidian"] floating enable, move position center, resize set 1800 1000
   [app_id="imv"] floating enable, move position center, resize set 1800 1000
+  [app_id="thunar"] floating enable, move position center, resize set 1800 1000
   [app_id="firefox"] inhibit_idle fullscreen
+  [title = "About Mozilla Firefox"] floating enable
+  [window_role = "About"] floating enable
+  [app_id="firefox" title="Library"] floating enable, sticky enable
   [title="^Picture-in-Picture$"] floating enable, move position center, sticky enable, border none
   [class="^steam$"] floating enable
-  [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, move position center, resize set 1200 800
+  [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, move position center
   [app_id="discord"] inhibit_idle fullscreen
-  [floating] border pixel 1
 }
-
 
 ### Theming
 #
@@ -195,7 +196,7 @@ default_floating_border pixel $border_size
 # Walls:
 #
 output * {
-   bg ~/.config/sway/walls/mac.jpg fill
+   bg ~/.config/sway/walls/mac2.jpg fill
 }
 
 #
@@ -229,4 +230,6 @@ output HDMI-A-1 pos 2560 0 mode 1920x1080@144Hz
 bar {
   swaybar_command waybar
 }
+
+############################
 include /etc/sway/config.d/*

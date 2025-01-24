@@ -1,31 +1,7 @@
 return {
 	{
-		"stevearc/conform.nvim",
-		cmd = "ConformInfo",
-		keys = {
-			{
-				"<leader>cf",
-				function()
-					require("conform").format({ lsp_fallback = true })
-				end,
-				mode = { "n", "v" },
-				desc = "Format Injected Langs",
-			},
-		},
-		opts = function()
-			require("conform").setup({
-				formatters_by_ft = {
-					c = { "clang_format" },
-					cpp = { "clang_format" },
-					go = { "goimports", "gofumpt" },
-					lua = { "stylua" },
-				},
-			})
-		end,
-	},
-
-	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		dependencies = {
 			{ "j-hui/fidget.nvim", opts = {} },
 			{ "williamboman/mason.nvim", config = true },
@@ -51,9 +27,10 @@ return {
 				map("]d", vim.diagnostic.goto_next, "Go to Next Diagnostic, Message")
 				map("<C-u>", vim.lsp.buf.signature_help, "Signature help")
 				map("<leader>cd", vim.diagnostic.open_float, "Open floating diagnostic message")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-				map("<leader>sl", vim.diagnostic.setloclist, "Put diagnostic to qf list")
-				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
+				map("<leader>ca", require("fzf-lua").lsp_code_actions, "[C]ode [A]ction")
+				map("<leader>cr", require("renamer").rename, "[C]ode [R]ename")
+				map("<leader>ls", require("fzf-lua").lsp_document_symbols, "[D]ocument [S]ymbols")
+				map("<leader>ll", vim.diagnostic.setloclist, "Put diagnostic to qf list")
 			end
 
 			-- Enable & Setup the following language servers
@@ -105,7 +82,6 @@ return {
 								upgrade_dependency = true,
 								vendor = true,
 							},
-							gofumpt = true,
 							completeUnimported = true,
 							usePlaceholders = false,
 							diagnosticsDelay = "250ms",
@@ -145,6 +121,14 @@ return {
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+			end
+
+			-- Your existing floating preview override
+			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+				opts = opts or {}
+				opts.border = "rounded"
+				return orig_util_open_floating_preview(contents, syntax, opts, ...)
 			end
 
 			-- Ensure the servers above are installed

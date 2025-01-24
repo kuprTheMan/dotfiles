@@ -3,22 +3,21 @@ all: tools terminal shell de
 
 tools:
 		cp -rv .config/nvim $(HOME)/.config
-		cp -v .config/git/.gitignore $(HOME)/
-		cp -v .config/git/.gitconfig $(HOME)/
+		cp -v .gitignore $(HOME)/
+		cp -v .gitconfig $(HOME)/
 
 terminal:
 		cp -rv .config/foot $(HOME)/.config
-		cp -rv .config/tmux $(HOME)/.config
+		cp -rv .tmux.conf $(HOME)/
 
 shell:
-		cp -v .config/zsh/.zshenv $(HOME)/
-		cp -v .config/zsh/.zshrc $(HOME)/
-		cp -v .config/zsh/starship.toml $(HOME).config
+		cp -v .config/fish $(HOME)/
+		cp -v .config/starship.toml $(HOME).config
 
 de:
 	cp -rv .config/sway $(HOME)/.config
 	cp -rv .config/swaylock $(HOME)/.config
 	cp -rv .config/swaync $(HOME)/.config
 	cp -rv .config/waybar $(HOME)/.config
-	cp -rv .config/rofi $(HOME)/.config
+	cp -rv .config/fuzzel $(HOME)/.config
 	cp -rv .config/gtk-3.0 $(HOME)/.config

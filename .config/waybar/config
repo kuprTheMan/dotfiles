@@ -5,11 +5,12 @@
   "margin-bottom": 0,
   "margin-left": 0,
   "margin-right": 0,
-  "modules-left": ["sway/workspaces", "sway/window"],
-  "modules-center": ["clock"],
-  "modules-right": ["sway/language", "tray", "pulseaudio"],
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["sway/language", "pulseaudio", "clock"],
   "clock": {
-    "format": "{:%a %b %d %H:%M}"
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip": false
   },
   "pulseaudio": {
     "format": "{volume} {icon} / {format_source}",
@@ -19,12 +20,9 @@
     "format-icons": {
       "default": ["󰕿","󰖀","󰕾"]
     },
+    "tooltip": false,
     "on-click": "pavucontrol"
   },
-  "sway/window": {
-    "format": "{title}",
-    "max-length": 25,
-   },
   "sway/workspaces": {
     "format": "{name}",
     "show-special": true,
@@ -40,17 +38,14 @@
       "6": [],
     },
   },
-  "tray": {
-    "icon-size": 22,
-    "show-passive-items": true,
-    "spacing": 8
-  },
   "sway/language": {
     "format": "{}",
+    "tooltip": false,
   },
   "sway/window": {
     "all-outputs": true,
     "max-length": 50,
-    "format": "<b>~ {}</b>",
+    "format": "<b>{}</b>",
+    "tooltip": true,
   }
 }

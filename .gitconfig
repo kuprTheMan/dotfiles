@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore
-	editor = nvim
+	editor = nvim --cmd 'let g:unception_block_while_host_edits=1'
 	ignorecase = false
 
 [alias]
@@ -10,6 +10,7 @@
 	co = checkout
   st = status
 	fpush = push --force-with-lease
+	unadd = reset
 	uncommit = reset --soft head^
 
 [branch]
@@ -41,5 +42,13 @@
 [diff]
   tool = nvimdiff
 
-[gpg]
-	format = ssh
+[user]
+  email = kupravagoodman@proton.me
+  name = Timur Kuprava
+  signingkey = 3120E120CDBBAADD
+
+[commit]
+  gpgsign = true
+
+[tag]
+	gpgSign = true
