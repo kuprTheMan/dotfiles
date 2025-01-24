@@ -11,7 +11,7 @@ terminal:
 		cp -rv .tmux.conf $(HOME)/
 
 shell:
-		cp -v .config/fish $(HOME)/
+		cp -v .config/fish $(HOME)/.config
 		cp -v .config/starship.toml $(HOME).config
 
 de:
