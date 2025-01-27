@@ -22,44 +22,9 @@ net-im/discord appindicator
 # required by net-im/telegram-desktop-5.0.4::gentoo
 # required by @__auto_slot_operator_replace_installed__ (argument)
 =media-video/ffmpeg-6.1.1-r8 opus vpx
-# required by virtual/libudev-251-r2::gentoo
-# required by sys-apps/util-linux-2.39.4-r1::gentoo[udev,-build]
-# required by media-libs/fontconfig-2.15.0::gentoo
-# required by games-util/steam-launcher-1.0.0.81::steam-overlay
-# required by games-util/steam-launcher (argument)
->=sys-apps/systemd-255.11 abi_x86_32
-# required by sys-apps/systemd-255.11::gentoo[gcrypt]
-# required by sys-apps/dbus-1.15.8::gentoo[systemd]
-# required by media-libs/libpulse-17.0::gentoo[dbus]
-# required by games-util/steam-launcher-1.0.0.81::steam-overlay[pulseaudio]
-# required by games-util/steam-launcher (argument)
->=dev-libs/libgcrypt-1.10.3-r1 abi_x86_32
-# required by sys-apps/systemd-255.11::gentoo[lz4]
-# required by sys-apps/dbus-1.15.8::gentoo[systemd]
-# required by media-libs/libpulse-17.0::gentoo[dbus]
-# required by games-util/steam-launcher-1.0.0.81::steam-overlay[pulseaudio]
-# required by games-util/steam-launcher (argument)
->=app-arch/lz4-1.10.0-r1 abi_x86_32
-# required by dev-libs/libgcrypt-1.10.3-r1::gentoo
-# required by sys-apps/systemd-255.11::gentoo[gcrypt]
-# required by sys-apps/dbus-1.15.8::gentoo[systemd]
-# required by media-libs/libpulse-17.0::gentoo[dbus]
-# required by games-util/steam-launcher-1.0.0.81::steam-overlay[pulseaudio]
-# required by games-util/steam-launcher (argument)
->=dev-libs/libgpg-error-1.49 abi_x86_32
 # required by games-util/steam-launcher-1.0.0.81::steam-overlay[joystick,wayland]
 # required by games-util/steam-launcher (argument)
 >=x11-base/xwayland-24.1.2 libei
-# required by media-libs/mesa-24.1.7::gentoo[vaapi]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by games-util/steam-launcher-1.0.0.81::steam-overlay
-# required by games-util/steam-launcher (argument)
->=media-libs/libva-2.22.0 abi_x86_32
-# required by dev-libs/nss-3.90.2-r1::gentoo
-# required by app-office/obsidian-1.6.7::guru
-# required by @selected
-# required by @world (argument)
->=dev-db/sqlite-3.46.1 abi_x86_32
 # required by dev-db/sqlite-3.46.1::gentoo[readline]
 # required by dev-libs/nss-3.90.2-r1::gentoo
 # required by app-office/obsidian-1.6.7::guru
