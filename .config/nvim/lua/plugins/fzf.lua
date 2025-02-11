@@ -30,8 +30,9 @@ return {
 				layout = "vertical",
 				vertical = "right:50%",
 				scrollbar = false,
+				border = "single",
 			},
-			border = "rounded",
+			border = "single",
 		},
 		files = {
 			cwd_prompt = false,
@@ -39,7 +40,7 @@ return {
 		lsp = {
 			code_actions = {
 				prompt = " ",
-        previewer = false,
+				previewer = false,
 				winopts = {
 					width = 0.4,
 					height = 0.3,

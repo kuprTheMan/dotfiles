@@ -10,17 +10,6 @@ return {
 					{ "<leader>gl", "<cmd>.GBrowse!<cr>", desc = "Copy link to current line" },
 				},
 			},
-			{
-				"mbbill/undotree",
-				keys = {
-					{
-						mode = "n",
-						"<leader>ut",
-						"<cmd>UndotreeToggle<CR>",
-						desc = "Open/Close UndoTree",
-					},
-				},
-			},
 		},
 		opts = {
 			signs = {

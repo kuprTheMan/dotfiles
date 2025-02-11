@@ -26,11 +26,11 @@ return {
 				map("[d", vim.diagnostic.goto_prev, "Go to Previous Diagnostic Message")
 				map("]d", vim.diagnostic.goto_next, "Go to Next Diagnostic, Message")
 				map("<C-u>", vim.lsp.buf.signature_help, "Signature help")
-				map("<leader>cd", vim.diagnostic.open_float, "Open floating diagnostic message")
-				map("<leader>ca", require("fzf-lua").lsp_code_actions, "[C]ode [A]ction")
-				map("<leader>cr", require("renamer").rename, "[C]ode [R]ename")
+				map("<C-f>", vim.diagnostic.open_float, "Open floating diagnostic message")
+				map("<C-l>", vim.diagnostic.setloclist, "Put diagnostic to qf list")
 				map("<leader>ls", require("fzf-lua").lsp_document_symbols, "[D]ocument [S]ymbols")
-				map("<leader>ll", vim.diagnostic.setloclist, "Put diagnostic to qf list")
+				map("<leader>ca", require("fzf-lua").lsp_code_actions, "[C]ode [A]ction")
+				map("<leader>cr", vim.lsp.buf.rename, "[C]ode [R]ename")
 			end
 
 			-- Enable & Setup the following language servers
@@ -49,26 +49,8 @@ return {
 						usePlaceholders = true,
 						completeUnimported = true,
 						clangdFileStatus = true,
-						fallbackFlags = { "-Wextra", "-Wall", "-Wpedantic" },
 					},
-				},
-				lua_ls = {
-					Lua = {
-						codeLens = {
-							enable = true,
-						},
-						hint = {
-							enable = true,
-							setType = false,
-							paramType = true,
-							paramName = "Disable",
-							semicolon = "Disable",
-							arrayIndex = "Disable",
-						},
-						diagnostics = {
-							globals = { "vim" },
-						},
-					},
+					fallbackFlags = { "-Wextra", "-Wall", "-Wpedantic" },
 				},
 				gopls = {
 					settings = {
@@ -83,7 +65,7 @@ return {
 								vendor = true,
 							},
 							completeUnimported = true,
-							usePlaceholders = false,
+							usePlaceholders = true,
 							diagnosticsDelay = "250ms",
 							staticcheck = true,
 							hints = {
@@ -105,35 +87,47 @@ return {
 								unusedvariable = true,
 								useany = true,
 								nilness = true,
+								ST1003 = true,
 							},
 						},
 					},
 				},
-				pylsp = {},
+				-- pylsp = {},
+				lua_ls = {},
 				marksman = {},
-				nim_langserver = {},
+				-- nim_langserver = {},
 			}
 
+      -- Completion
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = require("blink.cmp").get_lsp_capabilities(capabilities)
 
+      -- Diagnostic settings
 			local signs = { Error = "󰚌 ", Warn = " ", Hint = "󱧡 ", Info = " " }
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 			end
 
+			vim.diagnostic.config({
+				virtual_text = {
+					severity = {
+						min = vim.diagnostic.severity.ERROR,
+						max = vim.diagnostic.severity.ERROR,
+					},
+				},
+			})
+
 			-- Your existing floating preview override
 			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 				opts = opts or {}
-				opts.border = "rounded"
+				opts.border = "single"
 				return orig_util_open_floating_preview(contents, syntax, opts, ...)
 			end
 
 			-- Ensure the servers above are installed
 			local mason_lspconfig = require("mason-lspconfig")
-
 			mason_lspconfig.setup({
 				ensure_installed = vim.tbl_keys(servers),
 			})
@@ -143,7 +137,7 @@ return {
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
 						on_attach = on_lsp_attach,
-						settings = servers[server_name],
+						settings = (servers[server_name] or {}).settings,
 						single_file_support = (servers[server_name] or {}).single_file_support,
 						filetypes = (servers[server_name] or {}).filetypes,
 						cmd = (servers[server_name] or {}).cmd,

@@ -48,6 +48,7 @@ return {
 		end
 		require("oil").setup({
 			keymaps = {
+        ["<C-i>"] = "actions.select",
 				["yp"] = {
 					desc = "Copy filepath to system clipboard",
 					callback = function()

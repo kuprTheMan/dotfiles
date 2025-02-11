@@ -13,10 +13,10 @@ set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
 set -gx FZF_COLORS "bg+:-1,\
 fg:gray,\
-fg+:white,\
+fg+:yellow,\
 border:black,\
 spinner:0,\
-hl:yellow,\
+hl:magenta,\
 header:blue,\
 info:green,\
 pointer:red,\

@@ -24,7 +24,7 @@ vimcmd_replace_symbol = "[ %](bold orange)"
 vimcmd_visual_symbol = "[ %](bold magenta)"
 
 [directory]
-style = "#87FF5F bold"
+style = "green bold"
 truncate_to_repo = true
 truncation_length = 6
 format = ' [$path]($style)($read_only_style)'

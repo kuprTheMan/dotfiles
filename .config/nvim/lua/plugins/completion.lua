@@ -34,7 +34,7 @@ return {
 			},
 			documentation = {
 				window = {
-					border = "rounded",
+					border = "single",
 				},
 			},
 		},

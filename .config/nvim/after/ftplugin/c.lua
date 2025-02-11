@@ -1,4 +1,6 @@
 vim.opt_local.spell = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 
 vim.keymap.set(
   "n",
@@ -6,3 +8,11 @@ vim.keymap.set(
   "<cmd>ClangdSwitchSourceHeader<cr>",
   { desc = "Tooggle bettwen source and heade files" }
 )
+
+vim.keymap.set("n", "<leader>dm", function()
+	vim.cmd.Dispatch({ "make build" })
+end)
+
+vim.keymap.set("n", "<leader>dr", function()
+	vim.cmd.Dispatch({ "make run" })
+end)

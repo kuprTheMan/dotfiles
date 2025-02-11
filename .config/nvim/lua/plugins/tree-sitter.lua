@@ -3,7 +3,7 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"nvim-treesitter/nvim-treesitter-refactor",
+		"RRethy/vim-illuminate"
 	},
 	build = function()
 		local ts_update = require("nvim-treesitter.install").update({
@@ -49,19 +49,6 @@ return {
 					end
 				end,
 				additional_vim_regex_highlighting = false,
-			},
-			refactor = {
-				highlight_definitions = {
-					enable = true,
-					clear_on_cursor_move = true,
-				},
-				navigation = {
-					enable = true,
-					keymaps = {
-						goto_next_usage = "<a-n>",
-						goto_previous_usage = "<a-p>",
-					},
-				},
 			},
 			fold = { enabe = true },
 			textobjects = {

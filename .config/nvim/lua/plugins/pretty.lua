@@ -5,17 +5,28 @@ return {
 		priority = 1000,
 		opts = function()
 			require("gruvbox").setup({
-				contrast = "hard",
-				transparent_mode = false,
+				strikethrough = false,
 				italic = {
 					strings = false,
-					comments = true,
-					folds = false,
 				},
 				overrides = {
+					Normal = { bg = "#1a1a1a" },
+					NormalNC = { bg = "#2a2a2a" }, -- dim_inactive
 					SignColumn = { link = "GruvboxBg0" },
-					WinSeparator = { bg = "None" },
-					Normal = { bg = "#0E1018" },
+					WinSeparator = { bg = "none" },
+					CursorLineNr = { bg = "none", fg = "#d5c4a1" },
+					DiagnosticVirtualTextError = { bg = "#581b1b", fg = "#fb4934" },
+					-- DiagnosticVirtualTextWarn = { link = "GruvboxGray" },
+					-- DiagnosticVirtualTextInfo = { link = "GruvboxGray" },
+					-- DiagnosticVirtualTextHint = { link = "GruvboxGray" },
+					DiagnosticSignError = { bg = "none", fg = "#fb4934" },
+					DiagnosticSignWarn = { bg = "none", fg = "#fabd2f" },
+					DiagnosticSignInfo = { bg = "none", fg = "#83a598" },
+					DiagnosticSignHint = { bg = "none", fg = "#8ec07c" },
+					IlluminatedWordText = { bg = "#526252" },
+					IlluminatedWordWrite = { bg = "#625252" },
+					IlluminatedWordRead = { bg = "#526252" },
+					SpellBad = { undercurl = true, sp = "#928374" },
 				},
 			})
 			vim.cmd.colorscheme("gruvbox")
@@ -63,13 +74,6 @@ return {
 				show_end = false,
 			},
 		},
-	},
-
-	-- Floating rename input
-	{
-		"filipdutescu/renamer.nvim",
-		event = "LspAttach",
-		opts = {},
 	},
 
 	{

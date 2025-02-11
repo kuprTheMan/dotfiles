@@ -7,13 +7,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Disable usles providers
-vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
-
--- CursorHold after 250ms, made for highlight_definitions
-vim.opt.updatetime = 250
 
 --Turn on plugin in Git Reposetori
 local function check_git_repo()
@@ -31,7 +28,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
 })
 
 -- Set title
-vim.opt.title = true
+vim.o.title = true
 function GetCurrentIconFile()
 	local filename = vim.fn.expand("%:t")
 	local icon = require("mini.icons").get("file", filename)

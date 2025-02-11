@@ -1,53 +1,53 @@
-local opt = vim.opt
+local o = vim.o
 
 -- ===============================
 -- General
 -- ===============================
-opt.backup = false
-opt.wrap = false
-opt.swapfile = false
-opt.smoothscroll = true
-opt.splitright = true
-opt.splitbelow = true
-opt.scrolloff = 10
-opt.mouse = ""
-opt.spelllang = "en_us"
-opt.clipboard = "unnamedplus"
+o.backup = false
+o.wrap = false
+o.swapfile = false
+o.smoothscroll = true
+o.splitright = true
+o.splitbelow = true
+o.scrolloff = 10
+o.mouse = ""
+o.spelllang = "en_us"
+o.clipboard = "unnamedplus"
 
 -- ===============================
 -- UTF-8
 -- ===============================
-opt.encoding = "utf-8"
-opt.fileencoding = "utf-8"
+o.encoding = "utf-8"
+o.fileencoding = "utf-8"
 
 -- ===============================
 -- Indent&Tabs
 -- ===============================
-opt.expandtab = true
-opt.cindent = true
-opt.smarttab = true
-opt.shiftwidth = 2
-opt.tabstop = 2
+o.expandtab = true
+o.cindent = true
+o.smarttab = true
+o.shiftwidth = 2
+o.tabstop = 2
 
 -- ===============================
 -- Folding
 -- ===============================
-opt.foldmethod = 'expr'
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
-opt.foldenable = false
+o.foldmethod = 'expr'
+o.foldexpr = 'nvim_treesitter#foldexpr()'
+o.foldenable = false
 
 -- ===============================
 -- UI
 -- ===============================
-opt.cursorline = true
-opt.showtabline = 0
-opt.termguicolors = true
-opt.colorcolumn = tostring(120)
-opt.signcolumn = "yes"
-opt.laststatus = 3
-opt.showmode = false
-opt.number = true
-opt.relativenumber = true
-opt.list = true
-opt.listchars:append "eol:¬"
-opt.fillchars = "eob: "
+o.cursorline = true
+o.showtabline = 0
+o.termguicolors = true
+o.colorcolumn = tostring(120)
+o.signcolumn = "yes"
+o.laststatus = 3
+o.showmode = false
+o.number = true
+o.relativenumber = true
+o.list = true
+o.listchars = vim.o.listchars .. ",eol:¬"
+o.fillchars = "eob: "
