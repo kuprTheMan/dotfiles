@@ -9,8 +9,6 @@ install_basic_packages() {
         # Base
         app-admin/eclean-kernel
         app-eselect/eselect-repository
-        app-arch/unzip
-        app-crypt/pinentry
         app-portage/eix
         app-portage/genlop
         app-portage/gentoolkit
