@@ -1,6 +1,6 @@
 # 🏠 My personal dotfiles
 
-## ⚒️ Gentoo environment setup and dev-tools configuration
+⚒️ Gentoo environment setup and dev-tools configuration
 
 ``` bash
 dotfiles
