@@ -1,0 +1,65 @@
+# required by net-im/telegram-desktop-5.5.5::gentoo
+# required by telegram-desktop (argument)
+>=sys-libs/zlib-1.3.1-r1 minizip
+# required by kde-frameworks/kcoreaddons-5.116.0::gentoo
+# required by net-im/telegram-desktop-5.5.5::gentoo[-qt6]
+# required by telegram-desktop (argument)
+>=dev-qt/qtcore-5.15.14 icu
+# required by dev-qt/qtwayland-5.15.14::gentoo
+>=dev-qt/qtgui-5.15.14 egl
+# required by net-im/telegram-desktop-5.0.4::gentoo
+# required by @__auto_slot_operator_replace_installed__ (argument)
+=media-video/ffmpeg-6.1.1-r8 opus vpx
+# required by games-util/steam-launcher-1.0.0.81::steam-overlay[joystick,wayland]
+# required by games-util/steam-launcher (argument)
+>=x11-base/xwayland-24.1.2 libei
+# required by net-im/telegram-desktop-5.5.5::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-video/ffmpeg-6.1.2 opus vpx
+# required by dev-libs/nss-3.101.2::gentoo
+# required by net-misc/networkmanager-1.48.10-r1::gentoo[nss]
+# required by @selected
+# required by @world (argument)
+>=dev-db/sqlite-3.47.2-r1 abi_x86_32
+# required by dev-db/sqlite-3.47.2-r1::gentoo[readline]
+# required by dev-lang/python-3.12.9::gentoo[sqlite]
+# required by gnome-base/librsvg-2.58.5::gentoo
+# required by x11-libs/gtk+-3.24.42-r1::gentoo
+# required by media-libs/libpulse-17.0::gentoo[gtk]
+# required by www-client/firefox-bin-135.0.1-r1::gentoo
+# required by @selected
+# required by @world (argument)
+>=sys-libs/readline-8.2_p13-r1 abi_x86_32
+# required by media-libs/mesa-24.3.4-r1::gentoo
+# required by gui-libs/wlroots-0.18.2::gentoo
+# required by gui-wm/sway-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-util/spirv-tools-1.3.296.0 abi_x86_32
+# required by xfce-base/xfce4-panel-4.20.0::gentoo[dbusmenu]
+# required by xfce-base/thunar-4.20.1::gentoo[trash-panel-plugin]
+# required by xfce-base/thunar (argument)
+>=dev-libs/libdbusmenu-16.04.0-r2 gtk3
+# required by net-im/telegram-desktop-5.10.7::gentoo
+# required by net-im/telegram-desktop (argument)
+>=media-libs/tg_owt-0_pre20241202 X
+# required by sys-libs/pam-1.7.0_p20241230-r3::gentoo[-berkdb]
+# required by sys-apps/util-linux-2.40.4::gentoo[pam]
+# required by sys-fs/e2fsprogs-1.47.2::gentoo[tools]
+# required by @system
+# required by @world (argument)
+>=sys-libs/gdbm-1.24 abi_x86_32
+# required by media-libs/mesa-24.3.4-r1::gentoo
+# required by net-im/discord-0.0.87::gentoo
+# required by @selected
+# required by @world (argument)
+>=dev-util/spirv-tools-1.4.304.0 abi_x86_32
+# required by net-im/telegram-desktop-5.12.3-r6::gentoo[wayland,webkit]
+# required by telegram-desktop (argument)
+>=dev-qt/qtwayland-6.8.3 compositor
+# required by dev-libs/elfutils-0.193::gentoo[lzma]
+# required by dev-util/pahole-1.30::gentoo
+# required by sys-kernel/gentoo-kernel-bin-6.15.7::gentoo
+# required by virtual/dist-kernel-6.15.7::gentoo
+>=app-arch/xz-utils-5.8.1-r1 abi_x86_32

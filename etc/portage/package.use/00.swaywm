@@ -1,0 +1,3 @@
+gui-wm/sway -swaybar -tray
+gui-apps/waybar -tray
+gui-apps/swaybg gdk-pixbuf

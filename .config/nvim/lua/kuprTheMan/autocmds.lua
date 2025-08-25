@@ -1,8 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 
-local function augroup(name)
-	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
-end
+-- local function augroup(name)
+-- 	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+-- end
 
 autocmd("BufEnter", {
 	desc = "Rid auto comment for new string",
@@ -29,7 +29,7 @@ autocmd("BufWinEnter", {
 })
 
 autocmd({ "BufWritePre" }, {
-	group = augroup("auto_create_dir"),
+  -- group = augroup("auto_create_dir"),
 	callback = function(event)
 		if event.match:match("^%w%w+:[\\/][\\/]") then
 			return

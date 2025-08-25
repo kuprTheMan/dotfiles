@@ -1,0 +1,8 @@
+WARNING_FLAGS="-Werror=odr -Werror=lto-type-mismatch -Werror=strict-aliasing"
+
+COMMON_FLAGS="-O2 -pipe -march=native -flto=6 ${WARNING_FLAGS}"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+USE="lto"

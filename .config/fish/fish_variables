@@ -1,17 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export GPG_AGENT_INFO:/run/user/1000/gnupg/S\x2egpg\x2dagent\x3a32503\x3a1
-SETUVAR --export SSH_AGENT_PID:16185
-SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dXXXXXXCc8KcQ/agent\x2e16184
-SETUVAR SSH_KEYS_TO_AUTOLOAD:/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519\x1e/home/kupr/\x2essh/id_ed25519
 SETUVAR __fish_initialized:3400
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
-SETUVAR fish_color_command:blue
+SETUVAR fish_color_command:green
 SETUVAR fish_color_comment:red
 SETUVAR fish_color_cwd:green
 SETUVAR fish_color_cwd_root:red
-SETUVAR fish_color_end:green
+SETUVAR fish_color_end:blue
 SETUVAR fish_color_error:brred
 SETUVAR fish_color_escape:brcyan
 SETUVAR fish_color_history_current:\x2d\x2dbold
@@ -19,7 +15,7 @@ SETUVAR fish_color_host:normal
 SETUVAR fish_color_host_remote:yellow
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:brcyan
-SETUVAR fish_color_param:cyan
+SETUVAR fish_color_param:blue
 SETUVAR fish_color_quote:yellow
 SETUVAR fish_color_redirection:cyan\x1e\x2d\x2dbold
 SETUVAR fish_color_search_match:bryellow\x1e\x2d\x2dbackground\x3dbrblack
@@ -34,3 +30,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/home/kupr/\x2efoundry/bin

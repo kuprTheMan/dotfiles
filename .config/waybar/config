@@ -1,0 +1,50 @@
+{
+  "layer": "top",
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "modules-left": ["sway/workspaces"],
+  "modules-center": ["sway/window"],
+  "modules-right": ["sway/language", "pulseaudio", "clock"],
+  "clock": {
+    "format": "{:%a  %d  %b  %H:%M}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{volume} {icon}   /  {format_source}",
+    "format-muted": "󰖁   /  {format_source}",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
+    "format-icons": {
+      "default": ["󰕿","󰖀","󰕾"]
+    },
+    "tooltip": false,
+  },
+  "sway/workspaces": {
+    "format": "{name}",
+    "show-special": true,
+    "disable-scroll": true,
+    "all-outputs": true,
+    "window-rewrite": {},
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+    },
+  },
+  "sway/language": {
+    "format": "{}",
+    "tooltip": false,
+  },
+  "sway/window": {
+    "all-outputs": true,
+    "max-length": 50,
+    "format": "<b>{}</b>",
+    "tooltip": true,
+  }
+}

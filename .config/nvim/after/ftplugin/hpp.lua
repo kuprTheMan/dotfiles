@@ -1,4 +1,4 @@
-vim.opt_local.spell = true
+vim.opt_local.spell = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 

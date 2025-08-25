@@ -1,0 +1,15 @@
+output=DP-1
+background-color=#e8e3e3
+text-color=#151515
+border-size=0
+max-visible=3
+padding=10
+icons=1
+default-timeout=3000
+ignore-timeout=1
+font=Noto Sans 12
+width=500
+height=110
+
+[mode=hide]
+invisible=1

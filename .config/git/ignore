@@ -1,3 +1,5 @@
+# vim: set filetype=gitignore :
+
 # C common
 compile_commands.json
 .cache
@@ -10,4 +12,5 @@ compile_commands.json
 .idea
 .vs
 # General
-bin
+bin/
+build/

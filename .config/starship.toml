@@ -1,44 +1,24 @@
-# append newlines to command outputs
 add_newline = true
 
-# custom format
-format = """
-$sudo\
-$directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_status\
-$git_metrics\
-$docker_context\
-$line_break\
-$jobs\
-$character"""
+format = """ $directory$git_branch$git_status $character"""
 
-# prompt chars
 [character]
-success_symbol = "[ %](bold white)"
-error_symbol = "[ %](bold bright-red)"
-vimcmd_symbol = "[ %](bold white)"
-vimcmd_replace_symbol = "[ %](bold orange)"
-vimcmd_visual_symbol = "[ %](bold magenta)"
+success_symbol = "[\\$](white)"
+error_symbol = "[\\$](bold bright-red)"
+vimcmd_symbol = "[\\$](white)"
+vimcmd_replace_symbol = "[\\$](white)"
+vimcmd_visual_symbol = "[\\$](white)"
 
 [directory]
-style = "green bold"
+style = "bold purple"
 truncate_to_repo = true
-truncation_length = 6
-format = ' [$path]($style)($read_only_style)'
+truncation_length = 3
+format = '[$path]($style)($read_only_style)'
 
 [git_branch]
-symbol = "[「󰊢 ](bold blue)"
+symbol= " [[\\[](bold blue)󰊢 ](bold blue)"
 style = "bright-blue"
 format = '[$symbol$branch(:$remote_branch) ]($style)'
-
-[git_commit]
-only_detached = true
-tag_symbol = "/"
-tag_disabled = false
-format = "[「󰊢 $hash$tag ](bold bright-blue)"
 
 [git_status]
 ahead = "⇡${count}"
@@ -51,16 +31,4 @@ renamed = " "
 staged = "󰝒 "
 stashed = "󰬲 "
 untracked = " "
-format = "[$all_status$ahead_behind](yellow)"
-
-[git_metrics]
-disabled = false
-format = '[」](bold blue)'
-
-[docker_context]
-symbol = '󰡨'
-format = '[ $symbol $version ](bright-black)'
-
-[jobs]
-symbol = " +"
-number_threshold = 4
+format = "[$all_status$ahead_behind](yellow)[\\]](bold blue)"

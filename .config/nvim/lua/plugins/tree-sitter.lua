@@ -1,9 +1,9 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "VeryLazy",
+	event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"RRethy/vim-illuminate"
+		"RRethy/vim-illuminate",
 	},
 	build = function()
 		local ts_update = require("nvim-treesitter.install").update({
@@ -13,20 +13,20 @@ return {
 	end,
 
 	-- [[ Configure Treesitter ]]
-	opts = function()
+	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				-- language
 				"c",
 				"cpp",
 				"go",
+        "cmake",
 				"gosum",
 				"gowork",
 				"gomod",
 				"lua",
 				"sql",
 				"python",
-				"nim",
 				-- markup
 				"vimdoc",
 				"markdown",
@@ -35,7 +35,10 @@ return {
 				"csv",
 				"json",
 				"diff",
+        "proto",
 				"yaml",
+        "make",
+        "query",
 				"dockerfile",
 			},
 			indent = { enable = true },
@@ -73,19 +76,19 @@ return {
 					enable = true,
 					set_jumps = true,
 					goto_next_start = {
-						["]m"] = "@function.outer",
+						["]f"] = "@function.outer",
 						["]i"] = "@conditional.outer",
 					},
 					goto_next_end = {
-						["]M"] = "@function.outer",
+						["]F"] = "@function.outer",
 						["]I"] = "@conditional.outer",
 					},
 					goto_previous_start = {
-						["[m"] = "@function.outer",
+						["[f"] = "@function.outer",
 						["[i"] = "@conditional.outer",
 					},
 					goto_previous_end = {
-						["[M"] = "@function.outer",
+						["[F"] = "@function.outer",
 						["[I"] = "@conditional.outer",
 					},
 				},

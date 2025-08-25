@@ -1,0 +1,2 @@
+# Disable deprecated net utils
+sys-apps/net-tools-2.10

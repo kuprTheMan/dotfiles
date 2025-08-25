@@ -1,0 +1,74 @@
+# vim: set filetype=gitconfig :
+
+[user]
+  email = kupravagoodman@proton.me
+  name = Timur Kuprava
+  signingkey = 81EC2CAEFD66B095
+
+[core]
+	excludesfile = ~/.config/git/ignore
+  ignorecase = false
+  autocrlf = input
+  compression = 9
+  whitespace = error
+  preloadindex = true
+
+
+[status]
+  branch = true
+  short = true
+  showStash = true
+  showUntrackedFiles = all
+
+[pager]
+  branch = false
+  tag = false
+  diff = diff-so-fancy | $PAGER
+
+[branch]
+	sort = -committerdate
+
+[init]
+	defaultbranch = main
+
+[pull]
+  default = current
+	rebase = true
+
+[push]
+  default = current
+  followTags = true
+  autoSetupRemote = true
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+
+[commit]
+  gpgsign = true
+  verbose = true
+  template = ~/.config/git/template
+
+[tag]
+  gpgSign = true
+
+[alias]
+	aa = add --all
+	br = branch
+	cm = commit -m
+	cs = commit -s
+	co = checkout
+  ls = log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) - %D%n%s%n'
+  unadd = reset
+  uncommit = reset --soft head^
+
+[interactive]
+  diffFilter = diff-so-fancy --patch
+  singlekey = true
+
+[diff-so-fancy]
+  markEmptyLines = false
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
