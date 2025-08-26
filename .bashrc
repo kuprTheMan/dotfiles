@@ -1,7 +1,7 @@
 # GPG
 export GPG_TTY=$(tty)
 
-# DE
+# Environment vars
 export SDL_VIDEODRIVER=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway

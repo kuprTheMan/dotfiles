@@ -105,21 +105,16 @@ return {
     }
   },
 
-  -- Hl Words
+  -- DB Integration
   {
-    "RRethy/vim-illuminate",
+    "kristijanhusak/vim-dadbod-ui",
     lazy = true,
-    config = function()
-      require("illuminate").configure({
-        delay = 250,
-        modes_allowlist = { "n" },
-        filetypes_denylist = {
-          "fugitive",
-          "oil",
-          "qf",
-        },
-      })
-    end,
+    cmd = { "DB", "DBUI" },
+    ft = { "sql", "plsql" },
+    dependencies = {
+      "tpope/vim-dadbod",
+      "kristijanhusak/vim-dadbod-completion",
+    }
   },
 
   -- Build, Test, Run, Repeat
