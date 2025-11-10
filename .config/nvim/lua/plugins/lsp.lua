@@ -1,33 +1,4 @@
 return {
-
-  -- Formatter
-  {
-    "stevearc/conform.nvim",
-    cmd = "ConformInfo",
-    keys = {
-      {
-        "=",
-        function()
-          require("conform").format({ lsp_fallback = true })
-        end,
-        mode = { "n", "v" },
-        desc = "Format Injected Langs",
-      },
-    },
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          c = { "clang_format" },
-          cpp = { "clang_format" },
-          go = { "goimports", "gofumpt" },
-          proto = { "clang_format" },
-          lua = { "stylua" },
-        },
-      })
-    end,
-  },
-
-  -- LSP
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
@@ -49,15 +20,14 @@ return {
         map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
         map("gy", vim.lsp.buf.type_definition, "[G]oto T[y]pe Definition")
         map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-        map("grr", require("fzf-lua").lsp_references, "[G]oto [R]eferences")
+        map("grr", vim.lsp.buf.references, "[G]oto [R]eferences")
         map("grn", vim.lsp.buf.rename, "[C]ode [R]ename")
-        map("K", vim.lsp.buf.hover, "Hover Documentation")
+        map("gra", vim.lsp.buf.code_action, "[C]ode [A]ction")
         map("]d", vim.diagnostic.goto_next, "Go to Next Diagnostic, Message")
         map("[d", vim.diagnostic.goto_prev, "Go to Previous Diagnostic Message")
         map("<leader>D", vim.diagnostic.open_float, "Open floating diagnostic message")
         map("<leader>ds", require("fzf-lua").lsp_document_symbols, "[D]ocument [S]ymbols")
         map("<leader>wd", require("fzf-lua").diagnostics_workspace, "Find [W]orkspace [D]iagnostics")
-        map("<leader>ca", require("fzf-lua").lsp_code_actions, "[C]ode [A]ction")
         map("<leader>lr", "<cmd>LspRestart<CR>", "[L]sp [R]estart")
       end
 
@@ -91,9 +61,7 @@ return {
       end
 
       -- LSP's Settings
-      local lspconfig = require "lspconfig"
-
-      lspconfig.lua_ls.setup {
+      vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
             runtime = { version = "LuaJIT" },
@@ -103,9 +71,9 @@ return {
         },
         capabilities = capabilities,
         on_attach = on_attach,
-      }
+      })
 
-      lspconfig.clangd.setup {
+      vim.lsp.config("clangd", {
         filetypes = { "c", "cpp", "h", "hpp" },
         cmd = {
           "clangd",
@@ -123,9 +91,9 @@ return {
         fallbackFlags = { "-Wextra", "-Wall", "-Wpedantic" },
         capabilities = capabilities,
         on_attach = on_attach,
-      }
+      })
 
-      lspconfig.gopls.setup {
+      vim.lsp.config("gopls", {
         settings = {
           gopls = {
             completeUnimported = true,
@@ -157,13 +125,12 @@ return {
         },
         capabilities = capabilities,
         on_attach = on_attach,
-      }
+      })
 
       -- Ensure the servers above are installed
       require("mason").setup()
       require("mason-lspconfig").setup {
         ensure_installed = {
-          -- lsp
           "clangd",
           "gopls",
           "lua_ls",

@@ -14,10 +14,6 @@ map("n", "dw", 'vb"_d')
 map("n", "cd", "0D")
 map("n", "x", '"_x')
 
--- Split
-map("n", "|", "<cmd>vsplit<CR>", opts)
-map("n", "_", "<cmd>split<CR>", opts)
-
 -- Clear hlsearch
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
 
@@ -31,12 +27,6 @@ map("x", "<tab>", ">gv|")
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
--- Move to window using the <C-w> hjkl keys
-map("n", "<leader>wh", "<C-w>h", { remap = true })
-map("n", "<leader>wj", "<C-w>j", { remap = true })
-map("n", "<leader>wk", "<C-w>k", { remap = true })
-map("n", "<leader>wl", "<C-w>l", { remap = true })
 
 -- Move Lines
 map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==")

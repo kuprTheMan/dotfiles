@@ -1,0 +1,207 @@
+spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww" "img" "$HOME/.config/niri/walls/mac2.jpg"
+spawn-at-startup "foot" "--server"
+spawn-at-startup "mako"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+  // SDL_VIDEODRIVER "wayland"
+  WAYLAND_DISPLAY "wayland-1"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+  MOZ_ENABLE_WAYLAND "1"
+  _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
+prefer-no-csd
+
+clipboard {
+  disable-primary
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+xwayland-satellite {
+  path "xwayland-satellite"
+}
+
+cursor {
+  xcursor-theme "macOS"
+  xcursor-size 32
+}
+
+gestures {
+  hot-corners {
+    off
+  }
+}
+
+input {
+  keyboard {
+    xkb {
+      layout "us,ru"
+      options "grp:win_space_toggle"
+    }
+  }
+
+  focus-follows-mouse
+}
+
+output "DP-1" {
+  mode "2560x1440@165.003"
+  scale 1
+  transform "normal"
+  position x=0 y=0
+}
+
+output "HDMI-A-1" {
+  mode "1920x1080@144.001"
+  scale 1
+  transform "normal"
+  position x=2560 y=0
+}
+
+layout {
+  gaps 15
+
+  center-focused-column "never"
+
+  default-column-width { proportion 0.5; }
+
+  focus-ring {
+    width 4
+    active-color "#E8E3E3"
+    inactive-color "#0d0d0d"
+  }
+
+  border {
+    off
+    width 4
+
+    active-color "#E8E3E3"
+    inactive-color "#0d0d0d"
+    urgent-color "#B66467"
+  }
+
+  shadow {
+    softness 30
+    spread 5
+    offset x=0 y=5
+    color "#0007"
+  }
+}
+
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+
+window-rule {
+  geometry-corner-radius 0
+  clip-to-geometry true
+}
+
+window-rule {
+  match title="Friends List"
+  match title="Steam Settings"
+  match title="gtk*"
+  match app-id="qt6ct"
+  match app-id="firefox" title="Picture-in-Picture"
+  match app-id="firefox" title="About Mozilla Firefox"
+  match app-id="xdg-desktop-portal-gtk"
+  match title="popup title with spaces"
+  match title="Picture-in-Picture"
+  match title="Thunar"
+
+  open-floating true
+  open-focused true
+  default-column-width { }
+  default-window-height { }
+}
+
+window-rule {
+  match app-id="firefox"
+  open-maximized true
+}
+
+binds {
+  Mod+Return            { spawn "footclient"; }
+
+  Mod+D                 { spawn "fuzzel"; }
+
+  Mod+C                 { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
+
+  Mod+N                 { spawn-sh "$HOME/.config/niri/bin/dnd"; }
+
+  Mod+Shift+Q           { spawn-sh "$HOME/.config/niri/bin/recording"; }
+
+  Mod+BackSlash repeat=false { toggle-overview; }
+
+  Mod+W repeat=false    { close-window; }
+
+  Mod+H                 { focus-column-left; }
+  Mod+J                 { focus-window-down; }
+  Mod+K                 { focus-window-up; }
+  Mod+L                 { focus-column-right; }
+
+  Mod+Ctrl+H            { move-column-left; }
+  Mod+Ctrl+J            { move-window-down; }
+  Mod+Ctrl+K            { move-window-up; }
+  Mod+Ctrl+L            { move-column-right; }
+
+  Mod+Shift+H           { focus-monitor-left; }
+  Mod+Shift+L           { focus-monitor-right; }
+
+  Mod+Shift+Ctrl+H      { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+J      { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+K      { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+L      { move-column-to-monitor-right; }
+
+  Mod+U                 { focus-workspace-down; }
+  Mod+I                 { focus-workspace-up; }
+  Mod+Ctrl+U            { move-column-to-workspace-down; }
+  Mod+Ctrl+I            { move-column-to-workspace-up; }
+
+  Mod+Shift+U           { move-workspace-down; }
+  Mod+Shift+I           { move-workspace-up; }
+
+  Mod+1                 { focus-workspace 1; }
+  Mod+2                 { focus-workspace 2; }
+  Mod+3                 { focus-workspace 3; }
+  Mod+4                 { focus-workspace 4; }
+  Mod+5                 { focus-workspace 5; }
+  Mod+6                 { focus-workspace 6; }
+  Mod+7                 { focus-workspace 7; }
+  Mod+8                 { focus-workspace 8; }
+  Mod+9                 { focus-workspace 9; }
+  Mod+Shift+1           { move-column-to-workspace 1; }
+  Mod+Shift+2           { move-column-to-workspace 2; }
+  Mod+Shift+3           { move-column-to-workspace 3; }
+  Mod+Shift+4           { move-column-to-workspace 4; }
+  Mod+Shift+5           { move-column-to-workspace 5; }
+  Mod+Shift+6           { move-column-to-workspace 6; }
+  Mod+Shift+7           { move-column-to-workspace 7; }
+  Mod+Shift+8           { move-column-to-workspace 8; }
+  Mod+Shift+9           { move-column-to-workspace 9; }
+
+  Mod+F                 { maximize-column; }
+  Mod+Shift+F           { fullscreen-window; }
+
+  Mod+Minus             { set-column-width "-10%"; }
+  Mod+Equal             { set-column-width "+10%"; }
+  Mod+Shift+Minus       { set-window-height "-10%"; }
+  Mod+Shift+Equal       { set-window-height "+10%"; }
+
+  Mod+M                 { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+  Mod+Shift+M           { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+
+  Mod+V                 { toggle-window-floating; }
+
+  Mod+P                 { screenshot show-pointer=false; }
+  Mod+Shift+P           { screenshot-screen; }
+}

@@ -1,16 +1,6 @@
 # GPG
 export GPG_TTY=$(tty)
 
-# Environment vars
-export SDL_VIDEODRIVER=wayland
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
-export WAYLAND_DISPLAY=wayland-1
-export QT_QPA_PLATFORMTHEME=qt6ct
-export MOZ_ENABLE_WAYLAND=1
-export _JAVA_AWT_WM_NONREPARENTING=1
-
 # Golang
 export GOPATH=$HOME/.go
 export GOBIN=$HOME/.go/bin
@@ -26,7 +16,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export FZF_COLORS="bg+:-1,\
-fg:gray,\
+fg:white,\
 fg+:yellow,\
 border:black,\
 spinner:0,\

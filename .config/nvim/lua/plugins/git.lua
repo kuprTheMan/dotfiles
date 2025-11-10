@@ -5,7 +5,11 @@ return {
     dependencies = {
       "tpope/vim-fugitive",
       keys = {
-        { "<leader>gl", "<cmd>.GBrowse!<cr>", desc = "Copy link to current line" },
+        { "<leader>gy", "<cmd>.GBrowse!<cr>", desc = "Copy link to current line" },
+        { "<leader>gg", "<cmd>Gedit :<cr>", desc = "Open fugitive UI window" },
+        { "<leader>gl", "<cmd>Git log --graph<cr>", desc = "Show git log" },
+        { "<leader>gps", "<cmd>Git push", desc = "Push commit" },
+        { "<leader>gpl", "<cmd>Git pull", desc = "Pull commits" },
       },
       dependencies = {
         "tpope/vim-rhubarb",
@@ -40,11 +44,6 @@ return {
         end
         map("]g", gitsigns.prev_hunk, "[G]o to [P]revious Hunk")
         map("[g", gitsigns.next_hunk, "[G]it go to [N]ext Hunk")
-        map("<leader>gd", gitsigns.preview_hunk, "[G]it [D]iff Hunk")
-        map("<leader>gr", gitsigns.reset_hunk, "[G]it [R]eset hunk")
-        map("<leader>gu", gitsigns.undo_stage_hunk, "[G]it [U]nstage hunk")
-        map("<leader>gs", gitsigns.stage_hunk, "[G]it [S]tage hunk")
-        map("<leader>gb", gitsigns.toggle_current_line_blame, "[G]it [B]lame")
       end,
     },
   },

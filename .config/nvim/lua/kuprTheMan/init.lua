@@ -22,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
   -- Lazy settings
-  install = { colorscheme = { "gruvbox" } },
+  install = { colorscheme = { "solarized-osaka" } },
   checker = {
     enabled = false,
     notify = false,

@@ -1,8 +1,7 @@
-# Broken
-# sys-kernel/gentoo-kernel-bin ~amd64
-# virtual/dist-kernel ~amd64
-# sys-kernel/linux-headers ~amd64
+sys-kernel/gentoo-kernel-bin ~amd64
+virtual/dist-kernel ~amd64
+sys-kernel/linux-headers ~amd64
 
-=sys-kernel/gentoo-kernel-bin-6.15.9-r1
-=virtual/dist-kernel-6.15.9
-=sys-kernel/linux-headers-6.15
+# =sys-kernel/gentoo-kernel-bin-6.15.9-r1
+# =virtual/dist-kernel-6.15.9
+# =sys-kernel/linux-headers-6.15

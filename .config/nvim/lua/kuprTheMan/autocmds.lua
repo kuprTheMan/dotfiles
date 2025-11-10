@@ -1,9 +1,5 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- local function augroup(name)
--- 	return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
--- end
-
 autocmd("BufEnter", {
 	desc = "Rid auto comment for new string",
 	callback = function()
@@ -25,17 +21,6 @@ autocmd("BufWinEnter", {
 		if vim.bo.filetype == "help" then
 			vim.cmd.wincmd("L")
 		end
-	end,
-})
-
-autocmd({ "BufWritePre" }, {
-  -- group = augroup("auto_create_dir"),
-	callback = function(event)
-		if event.match:match("^%w%w+:[\\/][\\/]") then
-			return
-		end
-		local file = vim.uv.fs_realpath(event.match) or event.match
-		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 })
 

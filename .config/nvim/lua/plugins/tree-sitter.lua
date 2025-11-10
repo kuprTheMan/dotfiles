@@ -26,7 +26,6 @@ return {
     ts_update()
   end,
 
-  -- [[ Configure Treesitter ]]
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {

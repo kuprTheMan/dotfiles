@@ -22,8 +22,7 @@ setup_config_files() {
     local items=(
       nvim
       foot
-      sway
-      swaylock
+      niri
       waybar
       fuzzel
       mako
@@ -31,7 +30,6 @@ setup_config_files() {
       tmux
       git
       gtk-3.0
-      starship.toml
     )
 
     for item in "${items[@]}"; do

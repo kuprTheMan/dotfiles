@@ -1,45 +1,10 @@
 return {
-  -- Helpers
+  -- helpers
   "nvim-lua/plenary.nvim",
-
-  -- Better Movement
-  {
-    "smoka7/hop.nvim",
-    keys = {
-      {
-        "<leader>f",
-        function()
-          require("hop").hint_char2({ current_line_only = false })
-        end,
-        { remap = true },
-      },
-      {
-        "f",
-        function()
-          require("hop").hint_char1({
-            require("hop.hint").HintDirection.AFTER_CURSOR,
-            current_line_only = true,
-          })
-        end,
-        { remap = true },
-      },
-      {
-        "F",
-        function()
-          require("hop").hint_char1({
-            require("hop.hint").HintDirection.BEFORE_CURSOR,
-            current_line_only = true,
-          })
-        end,
-        { remap = true },
-      },
-    },
-    opts = {},
-  },
 
   {
     "windwp/nvim-autopairs",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    event = { "bufreadpost", "bufwritepost", "bufnewfile" },
     dependencies = {
       { "kylechui/nvim-surround", opts = {} },
     },
@@ -51,10 +16,6 @@ return {
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
-    -- stylua: ignore
-    keys = {
-      { "<leader>tl", "<cmd>TodoLocList<CR>", desc = "Show todo list with qf" }
-    },
     opts = {
       keywords = {
         TODO = {
@@ -74,29 +35,6 @@ return {
       })
     end,
   },
-
-  -- Super-Replace
-  -- {
-  --   "MagicDuck/grug-far.nvim",
-  --   cmd = "GrugFar",
-  --   keys = {
-  --     {
-  --       "<leader>sr",
-  --       function()
-  --         local grug = require("grug-far")
-  --         local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
-  --         grug.open({
-  --           transient = true,
-  --           prefills = {
-  --             filesFilter = ext and ext ~= "" and "*." .. ext or nil,
-  --           },
-  --         })
-  --       end,
-  --       mode = { "n", "v" },
-  --     },
-  --   },
-  --   opts = {},
-  -- },
 
   {
     "mbbill/undotree",

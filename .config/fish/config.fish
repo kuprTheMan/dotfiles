@@ -17,10 +17,6 @@ alias nvimconf "nvim ~/.config/nvim/init.lua"
 alias ls "eza -w 120 -F -H"
 alias ll "eza --icons -F -H --group-directories-first --git -all"
 
-# Abbrs
-abbr --add "eudn" "sudo eix-sync && sudo emerge -uDU @world && sudo emerge -ca"
-
 # Shell Ingretions
 fzf --fish | source
-starship init fish | source
 zoxide init fish --cmd cd | source

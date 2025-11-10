@@ -1,6 +1,7 @@
 vim.opt_local.spell = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.bo.formatprg = "clang-format"
 
 vim.keymap.set(
 	"n",
